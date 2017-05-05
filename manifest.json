@@ -1,0 +1,34 @@
+{
+  "name": "Top Tweets (time.mk) Derelativizator",
+  "version": "0.0.1",
+  "description": "Hide tweets @ time.mk top tweets pages with your custom user blacklist. Go to Options to create your list!",
+  "options_ui": {
+    "page": "html/options.html",
+    "chrome_style": true
+  },
+  "browser_action" : {
+      "default_icon" : "assets/icon-19.png",
+      "default_title" : "Derelativizator",
+      "default_popup": "html/popup.html"
+  },
+  "background": {
+    "scripts": ["lib/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://www.time.mk/twitter/*"],
+      "js": ["lib/derelativizator.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions" : [
+    "tabs",
+    "http://www.time.mk/twitter/*",
+    "storage"
+  ],
+  "icons" : {
+    "48" : "assets/icon-48.png",
+    "128" : "assets/icon-128.png"
+  },
+  "manifest_version": 2
+}
